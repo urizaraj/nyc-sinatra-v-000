@@ -1,6 +1,9 @@
 %h1 Figure #{ @figure.name }
 %h3= @titles
+%h4= 'This figure had no titles' if @titles == ""
 
 %h2 Landmarks
 - @landmarks.each do |landmark|
   %h3= landmark.name
+
+%h4= 'This figure had no landmarks' if @landmarks.size.zero?

@@ -31,7 +31,7 @@ class FiguresController < ApplicationController
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
     @landmarks = @figure.landmarks.order(:name)
-    @titles = @figure.titles.order(:name).join(', ')
+    @titles = @figure.titles.order(:name).map(&:name).join(', ')
     haml :'figures/show'
   end
 end
