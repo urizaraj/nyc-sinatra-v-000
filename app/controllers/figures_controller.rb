@@ -1,2 +1,2 @@
-class FigureController < ApplicationController
+class FiguresController < ApplicationController
 end
