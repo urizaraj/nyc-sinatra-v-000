@@ -35,7 +35,7 @@ class FiguresController < ApplicationController
     haml :'figures/show'
   end
 
-  get 'figures/:id/edit' do
+  get '/figures/:id/edit' do
     @figure = Figure.find(params[:id])
     @landmarks = Landmark.all.order(:name)
     @titles = Title.all.order(:name)
