@@ -1,4 +1,20 @@
 class FiguresController < ApplicationController
+  helpers do
+    def check_new(figure, params)
+      unless params[:landmark][:name].empty?
+        landmark = Landmark.create(params[:landmark])
+        figure.landmarks << landmark
+        figure.save
+      end
+
+      unless params[:title][:name].empty?
+        title = Title.create(params[:title])
+        figure.titles << title
+        figure.save
+      end
+    end
+  end
+
   get '/figures' do
     @figures = Figure.all.order(:name)
     haml :'figures/index'
@@ -6,19 +22,7 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     figure = Figure.create(params[:figure])
-
-    unless params[:landmark][:name].empty?
-      landmark = Landmark.create(params[:landmark])
-      figure.landmarks << landmark
-      figure.save
-    end
-
-    unless params[:title][:name].empty?
-      title = Title.create(params[:title])
-      figure.titles << title
-      figure.save
-    end
-
+    check_new(figure, params)
     redirect '/figures'
   end
 
@@ -45,19 +49,7 @@ class FiguresController < ApplicationController
   patch '/figures/:id' do
     figure = Figure.find(params[:id])
     figure.update(params[:figure])
-
-    unless params[:landmark][:name].empty?
-      landmark = Landmark.create(params[:landmark])
-      figure.landmarks << landmark
-      figure.save
-    end
-
-    unless params[:title][:name].empty?
-      title = Title.create(params[:title])
-      figure.titles << title
-      figure.save
-    end
-
+    check_new(figure, params)
     redirect "/figures/#{figure.id}"
   end
 end
