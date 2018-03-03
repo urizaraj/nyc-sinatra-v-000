@@ -1,0 +1,13 @@
+%h1 Landmark Editor
+
+%form(action="/landmarks/#{@landmark.id}" method="post")
+  %input#hidden(type="hidden" name="_method" value="patch")
+  %label
+    Landmark Name:
+    %input#landmark_name(type="text" name="landmark[name]"){value: @landmark.name}
+
+  %label
+    Year Completed:
+    %input#landmark_year_completed(type="text" name="landmark[year_completed]"){value: @landmark.year_completed}
+
+  %input#submit(type="submit" name="submit" value="Edit Landmark")

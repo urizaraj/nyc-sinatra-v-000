@@ -5,4 +5,4 @@
 
 - @landmarks.each do |landmark|
   %h2
-    %a(href="/landmarks/#{landmark.id}")= landmark.name
+    %a(href="/landmarks/#{landmark.id}")= "#{landmark.name} [#{landmark.year_completed}]"

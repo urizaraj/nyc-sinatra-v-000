@@ -17,4 +17,14 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     haml :'landmarks/show'
   end
+
+  get '/landmarks/:id/edit' do
+    @landmark = Landmark.find(params[:id])
+    haml :'landmarks/edit'
+  end
+
+  patch '/landmarks/:id' do
+    Landmark.find(params[:id]).update(params[:landmark])
+    redirect "/landmarks/#{params[:id]}"
+  end
 end
