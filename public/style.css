@@ -1,0 +1,14 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+}
+
+a {
+  color: #3066be;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+a:hover {
+  color: #3c3744;
+}

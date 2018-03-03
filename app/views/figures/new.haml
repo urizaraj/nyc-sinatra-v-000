@@ -1,0 +1,35 @@
+%h1 Figure Creator
+
+%form(action="/forms" method="post")
+  %label
+    Figure Name:
+    %input#figure_name(type="text" name="figure[name]")
+
+  %h3 Landmarks
+  - @landmarks.each do |landmark|
+    %label
+      %input(type="checkbox" name="figure[landmark_ids][]" value="#{landmark.id}")
+      = landmark.name
+
+  %h3 Titles
+  - @titles.each do |title|
+    %label
+      %input(type="checkbox" name="figure[title_ids][]" value="#{title.id}")
+      = title.name
+
+  %h3 Or, create a new Landmark
+
+  %label
+    Landmark Name:
+    %input#new_landmark(type="text" name="landmark[name]")
+  %label
+    Year Completed:
+    %input#landmark_year(type="text" name="landmark[year_completed]")
+
+  %h3 Or, create a new Title
+
+  %label
+    Title Name:
+    %input#new_title(type="text" name="title[name]")
+  %p
+    %input#submit(type="submit" name="submit" value="Submit")

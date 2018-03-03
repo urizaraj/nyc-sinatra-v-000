@@ -14,3 +14,6 @@ gem 'rack-test'
 gem 'sinatra-twitter-bootstrap', :require => 'sinatra/twitter-bootstrap'
 gem 'capybara'
 gem 'require_all'
+
+# Added at 2018-03-03 15:18:32 +0000 by urizaraj:
+gem "haml", "~> 5.0"
