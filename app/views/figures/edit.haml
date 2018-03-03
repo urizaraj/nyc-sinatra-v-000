@@ -1,0 +1,37 @@
+%h1 Figure Editor
+
+%form(action="/figures/#{@figure.id}" method="post")
+  %input#hidden(type="hidden" name="_method" value="patch")
+  %label
+    Figure Name:
+    %input#figure_name(type="text" name="figure[name]" value="#{@figure.name}")
+
+  %h3 Landmarks
+  - @landmarks.each do |landmark|
+    %label
+      %input(type="checkbox" name="figure[landmark_ids][]" id="landmark_#{landmark.id}" value="#{landmark.id}" #{checked if @figure.landmarks.include?(landmark)})
+      = landmark.name
+
+  %h3 Titles
+  - @titles.each do |title|
+    %label
+      %input(type="checkbox" name="figure[title_ids][]" id="title_#{title.id}" value="#{title.id}" #{checked if @figure.titles.include?(title)})
+      = title.name
+
+  %h3 Or, create a new Landmark
+
+  %label
+    Landmark Name:
+    %input#new_landmark(type="text" name="landmark[name]")
+  %label
+    Year Completed:
+    %input#landmark_year(type="text" name="landmark[year_completed]")
+
+  %h3 Or, create a new Title
+
+  %label
+    Title Name:
+    %input#new_title(type="text" name="title[name]")
+
+  %p
+    %input#submit(type="submit" name="submit" value="Create New Figure")

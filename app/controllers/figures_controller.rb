@@ -34,4 +34,30 @@ class FiguresController < ApplicationController
     @titles = @figure.titles.order(:name).map(&:name).join(', ')
     haml :'figures/show'
   end
+
+  get 'figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    @landmarks = Landmark.all.order(:name)
+    @titles = Title.all.order(:name)
+    haml :'figures/edit'
+  end
+
+  patch '/figures/:id' do
+    figure = Figure.find(params[:id])
+    figure.update(params[:figure])
+
+    unless params[:landmark][:name].empty?
+      landmark = Landmark.create(params[:landmark])
+      figure.landmarks << landmark
+      figure.save
+    end
+
+    unless params[:title][:name].empty?
+      title = Title.create(params[:title])
+      figure.titles << title
+      figure.save
+    end
+
+    redirect "/figures/#{figure.id}"
+  end
 end
