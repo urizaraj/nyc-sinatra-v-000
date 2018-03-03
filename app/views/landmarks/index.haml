@@ -1,0 +1,5 @@
+%h1 Landmarks
+
+- @landmarks.each do |landmark|
+  %h2
+    %a(href="/landmarks/#{landmark.id}")= landmark.name
