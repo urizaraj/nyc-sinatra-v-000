@@ -12,4 +12,9 @@ class LandmarksController < ApplicationController
     Landmark.create(params[:landmark])
     redirect '/landmarks'
   end
+
+  get '/landmarks/:id' do
+    @landmark = Landmark.find(params[:id])
+    haml :'landmarks/show'
+  end
 end

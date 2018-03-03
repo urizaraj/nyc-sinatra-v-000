@@ -1,5 +1,8 @@
 %h1 Landmarks
 
+%p
+  %a(href="/landmarks/new") Create a new Landmark
+
 - @landmarks.each do |landmark|
   %h2
     %a(href="/landmarks/#{landmark.id}")= landmark.name

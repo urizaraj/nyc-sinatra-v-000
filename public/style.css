@@ -12,3 +12,11 @@ a {
 a:hover {
   color: #3c3744;
 }
+
+.type {
+  background: #b4c5e4;
+  color: #090c9b;
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: .2rem;
+}
