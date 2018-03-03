@@ -9,9 +9,11 @@ class FiguresController < ApplicationController
     unless params[:landmark][:name].empty?
       landmark = Landmark.create(params[:landmark])
       figure.update(landmark: landmark)
+    end
     unless param[:title][:name].empty?
       title = Title.create(params[:title])
       figure.update(title: title)
+    end
     redirect '/figures'
   end
 
