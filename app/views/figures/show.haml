@@ -1,10 +1,9 @@
 %h1
   %span.type Figure
   = @figure.name
+
 %br
 
-%p
-  %a(href="/figures/#{@figure.id}/edit") Edit this figure
 %h3= @titles
 %h4= 'This figure had no titles' if @titles == ""
 
@@ -13,3 +12,8 @@
   %h3= landmark.name
 
 %h4= 'This figure had no landmarks' if @landmarks.size.zero?
+
+%br
+
+%p
+  %a(href="/figures/#{@figure.id}/edit") Edit this figure

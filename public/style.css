@@ -20,3 +20,21 @@ a:hover {
   margin-right: 1rem;
   border-radius: .2rem;
 }
+
+.row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: #090c9b;
+  width: 20rem;
+  text-align: center;
+}
+
+.row a {
+  color: #b4c5e4;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.row a:hover {
+  color: #3066be;
+}
