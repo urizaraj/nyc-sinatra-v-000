@@ -1,0 +1,6 @@
+%h1 Figure #{ @figure.name }
+%h3= @titles
+
+%h2 Landmarks
+- @landmarks.each do |landmark|
+  %h3= landmark.name

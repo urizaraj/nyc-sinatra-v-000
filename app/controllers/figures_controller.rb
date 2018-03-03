@@ -6,14 +6,19 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     figure = Figure.create(params[:figure])
+
     unless params[:landmark][:name].empty?
       landmark = Landmark.create(params[:landmark])
-      figure.update(landmark: landmark)
+      figure.landmarks << landmark
+      figure.save
     end
-    unless param[:title][:name].empty?
+
+    unless params[:title][:name].empty?
       title = Title.create(params[:title])
-      figure.update(title: title)
+      figure.titles << title
+      figure.save
     end
+
     redirect '/figures'
   end
 
@@ -21,5 +26,12 @@ class FiguresController < ApplicationController
     @landmarks = Landmark.all.order(:name)
     @titles = Title.all.order(:name)
     haml :'figures/new'
+  end
+
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @landmarks = @figure.landmarks.order(:name)
+    @titles = @figure.titles.order(:name).join(', ')
+    haml :'figures/show'
   end
 end
