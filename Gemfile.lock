@@ -107,7 +107,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   capybara
-  haml
+  haml (~> 5.0)
   pry
   rack-test
   rake
